@@ -1,26 +1,35 @@
+import { Injectable } from '@angular/core';
 import {
   CanActivate,
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot,
   CanActivateChild,
+  Router,
 } from "@angular/router";
 
 import { Observable } from "rxjs";
 
 
+@Injectable()
 export class AuthGuard implements CanActivate, CanActivateChild {
 
-  public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot)
-    : Observable<boolean> | boolean {
-    return this._checkAuthGuard();
-  }
-  
-  public canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot)
-    : Observable<boolean> | boolean {
-    return this._checkAuthGuard();
-  }
+  constructor(
+    private readonly _router: Router,
+  ) {}
 
-  private _checkAuthGuard(): Observable<boolean> | boolean {
-    return false;
+  public canActivate()
+    : Observable<boolean> | boolean {
+      return this._checkAuthGuard();
+    }
+    
+    public canActivateChild()
+    : Observable<boolean> | boolean {
+      return this._checkAuthGuard();
+    }
+    
+    private _checkAuthGuard(): Observable<boolean> | boolean {
+      const canActivate = true;
+      if (!canActivate) {
+        this._router.navigate(['/login']);
+      }
+      return canActivate;
   }
 }

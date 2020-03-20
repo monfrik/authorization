@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AuthGuard } from '@core/guards';
+import { AuthService } from './auth/services';
 
 
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
   ],
   exports: [RouterModule],
+  providers: [AuthService],
 })
 
 export class AppRoutingModule { }

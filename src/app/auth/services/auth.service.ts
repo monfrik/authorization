@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { tap } from "rxjs/operators";
 
 import { UserModel } from '@app/core/models';
@@ -32,9 +32,14 @@ export class AuthService {
       );
   }
 
+  public checkUserAuthorization(): Observable<boolean> {
+    return of(false);
+  }
+
   private _saveTokens(tokens: { access_token: string, refrash_token:string }): void {
     for(const token in tokens) {
       localStorage.setItem(token, tokens[token]);
     }
   }
+
 }
