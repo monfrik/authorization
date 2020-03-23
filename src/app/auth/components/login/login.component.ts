@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+
 import { AuthService } from '@app/auth/services';
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
   public loginForm: FormGroup;
+
+  private _destroy$ = new Subject<void>();
 
   public constructor(
     private readonly _formBuilder: FormBuilder,
@@ -20,14 +27,26 @@ export class LoginComponent implements OnInit {
     this._formInit();
   }
 
+  public ngOnDestroy(): void {
+    this._destroy$.next();
+    this._destroy$.complete();
+  }
+
   public onSubmit(): void {
     this._authService
       .login(this.loginForm.value)
+      .pipe(
+        takeUntil(this._destroy$),
+      )
       .subscribe({
         next: () => {},
         error: () => {},
         complete: () => {},
       });
+  }
+
+  public onReset(): void {
+    this.loginForm.reset();
   }
 
   private _formInit(): void {
