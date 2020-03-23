@@ -1,11 +1,11 @@
 export class UserModel {
 
+  public id: number;
   public name: string;
-  private _id: number;
 
   public constructor(userData: any = {}) {
+    this.id = userData.id;
     this.name = userData.name;
-    this._id = userData.id;
   }
 
 }
