@@ -4,9 +4,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
-import { UserModel } from '@app/core/models';
+import { IUser } from '@app/core/interfaces';
 
-import { IUserFormData } from '../interfaces';
+import { IUserLoginData } from '../interfaces';
 
 
 const URL = '/api/auth';
@@ -21,8 +21,8 @@ export class AuthService {
     private readonly _http: HttpClient,
   ) { }
 
-  public login(userData: IUserFormData): Observable<UserModel> {
-    return this._http.post<UserModel>(URL, userData, HTTP_OPTIONS)
+  public login(userData: IUserLoginData): Observable<IUser> {
+    return this._http.post<IUser>(URL, userData, HTTP_OPTIONS)
       .pipe(
         tap((response: any) => {
           if (response.status) {
