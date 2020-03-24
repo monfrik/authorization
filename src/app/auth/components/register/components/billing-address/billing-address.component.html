@@ -1,0 +1,55 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <input
+    formControlName="country"
+    matInput
+    type="text"
+    name="country"
+    placeholder="Country"
+    required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+    formControlName="city"
+    matInput
+    type="text"
+    name="city"
+    placeholder="Сity"
+    required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+    formControlName="street"
+    matInput
+    type="text"
+    name="street"
+    placeholder="Street"
+    required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+    formControlName="home"
+    matInput
+    type="text"
+    name="home"
+    placeholder="Home"
+    required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+    formControlName="apartment"
+    matInput
+    type="text"
+    name="apartment"
+    placeholder="Apartment"
+    required>
+  </mat-form-field>
+
+  <div>
+    <button mat-button matStepperNext>Next</button>
+  </div>
+</form>
