@@ -2,14 +2,37 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import {
-  LoginComponent
+  LoginComponent,
+  RegisterComponent,
+  AuthViewComponent,
 } from './components';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent,
+    pathMatch: 'full',
+    redirectTo: 'login',
+  },
+  {
+    path: 'login',
+    component: AuthViewComponent,
+    children: [
+      {
+        path: '**',
+        component: LoginComponent,
+      },
+    ],
+  },
+  {
+    path: 'register',
+    component: AuthViewComponent,
+    children: [
+      {
+        path: '**',
+        component: RegisterComponent,
+      },
+    ],
   },
 ];
 

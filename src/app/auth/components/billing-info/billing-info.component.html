@@ -1,0 +1,41 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <input
+    formControlName="cart"
+    matInput
+    type="text"
+    name="cart"
+    placeholder="Cart">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+    formControlName="fullName"
+    matInput
+    type="text"
+    name="fullname"
+    placeholder="Full name">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+    formControlName="validity"
+    matInput
+    type="text"
+    name="validity"
+    placeholder="Validity">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+    formControlName="cvv"
+    matInput
+    type="text"
+    name="cvv"
+    placeholder="CVV">
+  </mat-form-field>
+
+  <div>
+    <button mat-button matStepperNext>Next</button>
+  </div>
+</form>

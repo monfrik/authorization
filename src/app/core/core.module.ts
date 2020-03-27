@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
+
 @NgModule({
   imports: [
     HttpClientModule,
@@ -8,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
   exports: [
     HttpClientModule,
   ],
+  providers: [],
 })
 
 export class CoreModule { }

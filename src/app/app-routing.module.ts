@@ -8,7 +8,7 @@ import { AuthService } from './auth/services';
 
 const routes: Routes = [
   {
-    path: 'login',
+    path: 'auth',
     loadChildren: () => import('./auth').then((mod) => mod.AuthModule),
   },
   {
@@ -20,7 +20,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'auth',
     pathMatch: 'full',
   },
 ];
