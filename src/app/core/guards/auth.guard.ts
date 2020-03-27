@@ -3,6 +3,7 @@ import {
   CanActivate,
   CanActivateChild,
   Router,
+  UrlTree,
 } from '@angular/router';
 
 import { Observable } from 'rxjs';
@@ -15,18 +16,20 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     private readonly _router: Router,
   ) {}
 
-  public canActivate(): Observable<boolean> | boolean {
+  public canActivate(): Observable<boolean> | boolean | UrlTree {
     return this._checkAuthGuard();
   }
 
-  public canActivateChild(): Observable<boolean> | boolean {
+  public canActivateChild(): Observable<boolean> | boolean | UrlTree {
     return this._checkAuthGuard();
   }
 
-  private _checkAuthGuard(): Observable<boolean> | boolean {
-    const canActivate = true;
+  private _checkAuthGuard(): Observable<boolean> | boolean | UrlTree {
+    const canActivate = false;
     if (!canActivate) {
-      this._router.navigate(['/login']);
+      const url = '/auth/login';
+      const tree: UrlTree = this._router.parseUrl(url);
+      return tree;
     }
     return canActivate;
   }
