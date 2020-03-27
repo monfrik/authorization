@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
 import { AuthService } from '@app/auth/services';
+import { mustMatch } from '@app/auth/helpers';
+
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
 
@@ -19,20 +22,22 @@ export class RegisterComponent implements OnInit {
   ) { }
 
   public ngOnInit(): void {
-    this._formInit();
+    this._initForm();
   }
 
   public onSubmit(): void {
-    
+    if (this.commonInfoForm.valid && this.billingAddressForm.valid && this.billingInfoForm.valid) {
+     // register function
+    }
   }
 
-  private _formInit(): void {
+  private _initForm(): void {
     this.commonInfoForm = this._formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
-      repeatPassword: ['', [Validators.required]],
-      firstname: ['', [Validators.required]],
-      lastname: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confrimPassword: ['', [Validators.required]],
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
       patronymic: ['', [Validators.required]],
       sex: ['', [Validators.required]],
       birthday: ['', [Validators.required]],
@@ -42,8 +47,10 @@ export class RegisterComponent implements OnInit {
       street: ['', [Validators.required]],
       home: ['', [Validators.required]],
       apartment: ['', [Validators.required]],
+    }, {
+      validator: mustMatch('password', 'confrimPassword'),
     });
-    
+
     this.billingAddressForm = this._formBuilder.group({
       country: ['', [Validators.required]],
       city: ['', [Validators.required]],
@@ -54,7 +61,7 @@ export class RegisterComponent implements OnInit {
 
     this.billingInfoForm = this._formBuilder.group({
       cart: [''],
-      fullname: [''],
+      fullName: [''],
       validity: [''],
       cvv: [''],
     });

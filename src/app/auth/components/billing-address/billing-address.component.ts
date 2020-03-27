@@ -4,7 +4,7 @@ import { FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-billing-address',
   templateUrl: './billing-address.component.html',
-  styleUrls: ['./billing-address.component.scss']
+  styleUrls: ['./billing-address.component.scss'],
 })
 export class BillingAddressComponent implements OnInit {
 

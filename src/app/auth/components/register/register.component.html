@@ -1,33 +1,36 @@
 <div class="register">
-  <div class="register-container">
-    <mat-card class="register-card">Register</mat-card>
+  <mat-card class="register-card">Register</mat-card>
 
-    <mat-horizontal-stepper [linear]="true" #stepper class="register-stepper">
-      <mat-step [stepControl]="commonInfoForm">
-        <ng-template matStepLabel>Fill out your common information</ng-template>
-        <app-common-info [formGroup]="commonInfoForm"></app-common-info>
-      </mat-step>
-      <mat-step [stepControl]="billingAddressForm">
-        <ng-template matStepLabel>Fill out your billing address</ng-template>
-        <app-billing-address [formGroup]="billingAddressForm"></app-billing-address>
-      </mat-step>
-      <mat-step [stepControl]="billingInfoForm">
-        <ng-template matStepLabel>Fill out your billing information</ng-template>
-        <app-billing-info [formGroup]="billingInfoForm"></app-billing-info>
-      </mat-step>
-      <mat-step>
-        <ng-template matStepLabel>Done</ng-template>
-        <p>You are now done.</p>
-        <div class="register-actions">
-          <button mat-button (click)="onSubmit()" class="register-action">Submit</button>
-          <button mat-button matStepperPrevious class="register-action">Back</button>
-          <button mat-button (click)="stepper.reset()" class="register-action">Reset</button>
-          <a
+  <mat-horizontal-stepper [linear]="true" #stepper class="register-stepper">
+    <mat-step [stepControl]="commonInfoForm">
+      <ng-template matStepLabel>Fill out your common information</ng-template>
+      <app-common-info [formGroup]="commonInfoForm"></app-common-info>
+    </mat-step>
+    <mat-step [stepControl]="billingAddressForm">
+      <ng-template matStepLabel>Fill out your billing address</ng-template>
+      <app-billing-address [formGroup]="billingAddressForm"></app-billing-address>
+    </mat-step>
+    <mat-step [stepControl]="billingInfoForm">
+      <ng-template matStepLabel>Fill out your billing information</ng-template>
+      <app-billing-info [formGroup]="billingInfoForm"></app-billing-info>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div class="register-actions">
+        <button mat-button (click)="onSubmit()" class="register-action">Submit</button>
+        <button mat-button matStepperPrevious class="register-action">Back</button>
+        <button mat-button (click)="stepper.reset()" class="register-action">Reset</button>
+        <a
           mat-button
           [routerLink]="['/auth/login']"
           color="primary">Login</a>
-        </div>
-      </mat-step>
-    </mat-horizontal-stepper>
-  </div>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+
+  <a
+    mat-button
+    [routerLink]="['/auth/login']"
+    color="primary">Login</a>
 </div>

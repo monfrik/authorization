@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import {
@@ -13,17 +13,19 @@ import {
   MatNativeDateModule,
 } from '@angular/material';
 
+import { ApiInterceptor } from '@app/core/interceptors';
+
 import { AuthRoutingModule } from './auth-routing.module';
 import {
   LoginComponent,
   RegisterComponent,
-} from './components';
-import { AuthService } from './services';
-import {
   CommonInfoComponent,
   BillingAddressComponent,
   BillingInfoComponent,
-} from './components/register/components';
+  AuthViewComponent,
+} from './components';
+import { AuthService } from './services';
+
 
 @NgModule({
   imports: [
@@ -49,9 +51,15 @@ import {
     CommonInfoComponent,
     BillingAddressComponent,
     BillingInfoComponent,
+    AuthViewComponent,
   ],
   providers: [
     AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiInterceptor,
+      multi: true,
+    },
   ],
 })
 

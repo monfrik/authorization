@@ -6,8 +6,8 @@ export interface IUser {
   id: number;
   email: string;
   password: string;
-  firstname: string;
-  lastname: string;
+  firstName: string;
+  lastName: string;
   patronymic: string;
   sex: string;
   birthday: Date;

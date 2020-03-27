@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 import { IUser } from '@app/core/interfaces';
@@ -9,20 +9,17 @@ import { IUser } from '@app/core/interfaces';
 import { IUserLoginData } from '../interfaces';
 
 
-const URL = '/api/auth';
-const HTTP_OPTIONS = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-};
-
 @Injectable()
 export class AuthService {
+
+  private readonly _url = '/api/auth';
 
   constructor(
     private readonly _http: HttpClient,
   ) { }
 
   public login(userData: IUserLoginData): Observable<IUser> {
-    return this._http.post<IUser>(URL, userData, HTTP_OPTIONS)
+    return this._http.post<IUser>(this._url, userData)
       .pipe(
         tap((response: any) => {
           if (response.status) {
@@ -32,10 +29,6 @@ export class AuthService {
           // status invalid;
         }),
       );
-  }
-
-  public checkUserAuthorization(): Observable<boolean> {
-    return of(false);
   }
 
 }
