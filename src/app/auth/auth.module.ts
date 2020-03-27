@@ -25,6 +25,7 @@ import {
   AuthViewComponent,
 } from './components';
 import { AuthService } from './services';
+import { AuthInterceptor } from './interceptors';
 
 
 @NgModule({
@@ -58,6 +59,11 @@ import { AuthService } from './services';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ApiInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
       multi: true,
     },
   ],
