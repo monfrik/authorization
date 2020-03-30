@@ -1,0 +1,45 @@
+<form [formGroup]="formGroup">
+  <mat-form-field>
+    <input
+    formControlName="cart"
+    matInput
+    type="text"
+    name="cart"
+    placeholder="Cart">
+  </mat-form-field>
+  <mat-error *ngIf="cartControl?.getError('required')">Это поле обязательно</mat-error>
+
+  <mat-form-field>
+    <input
+    formControlName="fullName"
+    matInput
+    type="text"
+    name="fullname"
+    placeholder="Full name">
+  </mat-form-field>
+  <mat-error *ngIf="fullNameControl?.getError('required')">Это поле обязательно</mat-error>
+
+  <mat-form-field>
+    <input
+    formControlName="validity"
+    matInput
+    type="text"
+    name="validity"
+    placeholder="Validity">
+  </mat-form-field>
+  <mat-error *ngIf="validityControl?.getError('required')">Это поле обязательно</mat-error>
+
+  <mat-form-field>
+    <input
+    formControlName="cvv"
+    matInput
+    type="text"
+    name="cvv"
+    placeholder="CVV">
+  </mat-form-field>
+  <mat-error *ngIf="cvvControl?.getError('required')">Это поле обязательно</mat-error>
+
+  <div>
+    <button mat-button matStepperNext [disabled]="formGroup.invalid">Next</button>
+  </div>
+</form>

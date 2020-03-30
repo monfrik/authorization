@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   public loginForm: FormGroup;
 
-  private _destroy$ = new Subject<void>();
+  private readonly _destroy$ = new Subject<void>();
 
   public constructor(
     private readonly _formBuilder: FormBuilder,
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   ) { }
 
   public ngOnInit(): void {
-    this._formInit();
+    this._initForm();
   }
 
   public ngOnDestroy(): void {
@@ -33,15 +33,20 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   public onSubmit(): void {
+    if (this.loginForm.invalid) {
+      
+      return
+    }
+
     this._authService
       .login(this.loginForm.value)
       .pipe(
         takeUntil(this._destroy$),
       )
       .subscribe({
-        next: () => {},
-        error: () => {},
-        complete: () => {},
+        next: () => { },
+        error: () => { },
+        complete: () => { },
       });
   }
 
@@ -49,7 +54,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.loginForm.reset();
   }
 
-  private _formInit(): void {
+  private _initForm(): void {
     this.loginForm = this._formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
