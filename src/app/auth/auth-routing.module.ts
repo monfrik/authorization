@@ -11,25 +11,19 @@ import {
 const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
-    redirectTo: 'login',
-  },
-  {
-    path: 'login',
     component: AuthViewComponent,
     children: [
       {
-        path: '**',
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'login',
+      },
+      {
+        path: 'login',
         component: LoginComponent,
       },
-    ],
-  },
-  {
-    path: 'register',
-    component: AuthViewComponent,
-    children: [
       {
-        path: '**',
+        path: 'register',
         component: RegisterComponent,
       },
     ],

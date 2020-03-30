@@ -1,24 +1,33 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { FormGroup, AbstractControl } from '@angular/forms';
+
 
 @Component({
   selector: 'app-billing-info',
   templateUrl: './billing-info.component.html',
   styleUrls: ['./billing-info.component.scss'],
 })
-export class BillingInfoComponent implements OnInit {
+export class BillingInfoComponent {
 
   @Input()
   public formGroup: FormGroup;
 
   public constructor() { }
 
-  public ngOnInit(): void { }
+  get cartControl(): AbstractControl {
+    return this.formGroup.get('cart');
+  }
 
-  public onSubmit(): void { }
+  get fullNameControl(): AbstractControl {
+    return this.formGroup.get('fullName');
+  }
 
-  public onReset(): void {
-    this.formGroup.reset();
+  get validityControl(): AbstractControl {
+    return this.formGroup.get('validity');
+  }
+
+  get cvvControl(): AbstractControl {
+    return this.formGroup.get('cvv');
   }
 
 }

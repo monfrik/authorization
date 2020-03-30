@@ -1,10 +1,12 @@
 import { Component, Input } from '@angular/core';
-import { FormGroup, ValidationErrors } from '@angular/forms';
+import { FormGroup, ValidationErrors, AbstractControl } from '@angular/forms';
+
 
 enum Sex {
   male = 'male',
   female = 'female',
 }
+
 
 @Component({
   selector: 'app-common-info',
@@ -20,68 +22,60 @@ export class CommonInfoComponent {
 
   public constructor() { }
 
-  get emailError(): ValidationErrors {
-    return this._getValidationErrorByConrolName('email');
+  get emailControl(): AbstractControl {
+    return this.formGroup.get('email');
   }
 
-  get passwordError(): ValidationErrors {
-    return this._getValidationErrorByConrolName('password');
+  get passwordControl(): AbstractControl {
+    return this.formGroup.get('password');
   }
 
-  get confrimPasswordError(): ValidationErrors {
-    return this._getValidationErrorByConrolName('confrimPassword');
+  get confirmPasswordControl(): AbstractControl {
+    return this.formGroup.get('confirmPassword');
   }
 
-  get firstNameError(): ValidationErrors {
-    return this._getValidationErrorByConrolName('firstName');
+  get firstNameControl(): AbstractControl {
+    return this.formGroup.get('firstName');
   }
 
-  get lastNameError(): ValidationErrors {
-    return this._getValidationErrorByConrolName('lastName');
+  get lastNameControl(): AbstractControl {
+    return this.formGroup.get('lastName');
   }
 
-  get patronymicError(): ValidationErrors {
-    return this._getValidationErrorByConrolName('patronymic');
+  get patronymicControl(): AbstractControl {
+    return this.formGroup.get('patronymic');
   }
 
-  get sexError(): ValidationErrors {
-    return this._getValidationErrorByConrolName('sex');
+  get sexControl(): AbstractControl {
+    return this.formGroup.get('sex');
   }
 
-  get birthdayError(): ValidationErrors {
-    return this._getValidationErrorByConrolName('birthday');
+  get birthdayControl(): AbstractControl {
+    return this.formGroup.get('birthday');
   }
 
-  get phoneError(): ValidationErrors {
-    return this._getValidationErrorByConrolName('phone');
+  get phoneControl(): AbstractControl {
+    return this.formGroup.get('phone');
   }
 
-  get countryError(): ValidationErrors {
-    return this._getValidationErrorByConrolName('country');
+  get countryControl(): AbstractControl {
+    return this.formGroup.get('country');
   }
 
-  get cityError(): ValidationErrors {
-    return this._getValidationErrorByConrolName('city');
+  get cityControl(): AbstractControl {
+    return this.formGroup.get('city');
   }
 
-  get streetError(): ValidationErrors {
-    return this._getValidationErrorByConrolName('street');
+  get streetControl(): AbstractControl {
+    return this.formGroup.get('street');
   }
 
-  get homeError(): ValidationErrors {
-    return this._getValidationErrorByConrolName('home');
+  get homeControl(): AbstractControl {
+    return this.formGroup.get('home');
   }
 
-  get apartmentError(): ValidationErrors {
-    return this._getValidationErrorByConrolName('apartment');
-  }
-
-  private _getValidationErrorByConrolName(controlName: string): ValidationErrors {
-    const control = this.formGroup.get(controlName);
-    if (!this.formGroup || !control.invalid || !control.touched) {
-      return;
-    }
-    return control.errors;
+  get apartmentControl(): AbstractControl {
+    return this.formGroup.get('apartment');
   }
 
 }

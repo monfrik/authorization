@@ -13,8 +13,6 @@ import {
   MatNativeDateModule,
 } from '@angular/material';
 
-import { ApiInterceptor } from '@app/core/interceptors';
-
 import { AuthRoutingModule } from './auth-routing.module';
 import {
   LoginComponent,
@@ -25,7 +23,6 @@ import {
   AuthViewComponent,
 } from './components';
 import { AuthService } from './services';
-import { AuthInterceptor } from './interceptors';
 
 
 @NgModule({
@@ -46,27 +43,15 @@ import { AuthInterceptor } from './interceptors';
   ],
   declarations: [
     // pages
+    AuthViewComponent,
     LoginComponent,
     RegisterComponent,
     // register components
     CommonInfoComponent,
     BillingAddressComponent,
     BillingInfoComponent,
-    AuthViewComponent,
   ],
-  providers: [
-    AuthService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: ApiInterceptor,
-      multi: true,
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true,
-    },
-  ],
+  providers: [AuthService],
 })
 
 export class AuthModule { }

@@ -1,24 +1,37 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { FormGroup, AbstractControl } from '@angular/forms';
+
 
 @Component({
   selector: 'app-billing-address',
   templateUrl: './billing-address.component.html',
   styleUrls: ['./billing-address.component.scss'],
 })
-export class BillingAddressComponent implements OnInit {
+export class BillingAddressComponent {
 
   @Input()
   public formGroup: FormGroup;
 
   public constructor() { }
 
-  public ngOnInit(): void { }
+  get countryControl(): AbstractControl {
+    return this.formGroup.get('country');
+  }
 
-  public onSubmit(): void { }
+  get cityControl(): AbstractControl {
+    return this.formGroup.get('city');
+  }
 
-  public onReset(): void {
-    this.formGroup.reset();
+  get streetControl(): AbstractControl {
+    return this.formGroup.get('street');
+  }
+
+  get homeControl(): AbstractControl {
+    return this.formGroup.get('home');
+  }
+
+  get apartmentControl(): AbstractControl {
+    return this.formGroup.get('apartment');
   }
 
 }

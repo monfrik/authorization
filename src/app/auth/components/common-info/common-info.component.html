@@ -7,8 +7,8 @@
       name="email"
       placeholder="Email"
       required>
-      <mat-error *ngIf="emailError?.required">Это поле обязательно</mat-error>
-      <mat-error *ngIf="emailError?.email">Эллектронная почта введена не корректно</mat-error>
+      <mat-error *ngIf="emailControl?.getError('required')">Это поле обязательно</mat-error>
+      <mat-error *ngIf="emailControl?.getError('email')">Эллектронная почта введена не корректно</mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -19,21 +19,22 @@
       name="password"
       placeholder="Password"
       required>
-      <mat-error *ngIf="passwordError?.required">Это поле обязательно</mat-error>
-      <mat-error *ngIf="passwordError?.requiredLength">Минимальная длинна символов - 6</mat-error>
+
+      <mat-error *ngIf="passwordControl?.getError('required')">Это поле обязательно</mat-error>
+      <mat-error *ngIf="passwordControl?.getError('minlength')">Минимальная длинна символов - 6</mat-error>
   </mat-form-field>
 
   <mat-form-field>
     <input
-      formControlName="confrimPassword"
+      formControlName="confirmPassword"
       matInput
       type="password"
-      name="confrimPassword"
+      name="confirmPassword"
       placeholder="Confrim password"
       required>
-      <mat-error *ngIf="confrimPasswordError?.required">Это поле обязательно</mat-error>
-      <mat-error *ngIf="confrimPasswordError?.minLength">Минимальная длинна символов - 6</mat-error>
-      <mat-error *ngIf="confrimPasswordError?.mustMatch">Пароли не совпадают</mat-error>
+      <mat-error *ngIf="confirmPasswordControl?.getError('required')">Это поле обязательно</mat-error>
+      <mat-error *ngIf="confirmPasswordControl?.getError('minLength')">Минимальная длинна символов - 6</mat-error>
+      <mat-error *ngIf="confirmPasswordControl?.getError('mustMatch')">Пароли не совпадают</mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -44,7 +45,7 @@
       name="firstname"
       placeholder="Firstname"
       required>
-      <mat-error *ngIf="firstNameError?.required">Это поле обязательно</mat-error>
+      <mat-error *ngIf="firstNameControl?.getError('required')">Это поле обязательно</mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -55,7 +56,7 @@
       name="lastname"
       placeholder="Lastname"
       required>
-      <mat-error *ngIf="lastNameError?.required">Это поле обязательно</mat-error>
+      <mat-error *ngIf="lastNameControl?.getError('required')">Это поле обязательно</mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -66,7 +67,7 @@
       name="patronymic"
       placeholder="Patronymic"
       required>
-      <mat-error *ngIf="patronymicError?.required">Это поле обязательно</mat-error>
+      <mat-error *ngIf="patronymicControl?.getError('required')">Это поле обязательно</mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -75,7 +76,7 @@
       <mat-option [value]="sex.male">Male</mat-option>
       <mat-option [value]="sex.female">Female</mat-option>
     </mat-select>
-    <mat-error *ngIf="sexError?.required">Это поле обязательно</mat-error>
+    <mat-error *ngIf="sexControl?.getError('required')">Это поле обязательно</mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -87,7 +88,7 @@
       required>
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
-    <mat-error *ngIf="birthdayError?.required">Это поле обязательно</mat-error>
+    <mat-error *ngIf="birthdayControl?.getError('required')">Это поле обязательно</mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -98,7 +99,7 @@
     name="phone"
     placeholder="Phone"
     required>
-    <mat-error *ngIf="phoneError?.required">Это поле обязательно</mat-error>
+    <mat-error *ngIf="phoneControl?.getError('required')">Это поле обязательно</mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -109,7 +110,7 @@
     name="country"
     placeholder="Country"
     required>
-    <mat-error *ngIf="countryError?.required">Это поле обязательно</mat-error>
+    <mat-error *ngIf="countryControl?.getError('required')">Это поле обязательно</mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -120,7 +121,7 @@
     name="city"
     placeholder="Сity"
     required>
-    <mat-error *ngIf="cityError?.required">Это поле обязательно</mat-error>
+    <mat-error *ngIf="cityControl?.getError('required')">Это поле обязательно</mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -131,7 +132,7 @@
     name="street"
     placeholder="Street"
     required>
-    <mat-error *ngIf="streetError?.required">Это поле обязательно</mat-error>
+    <mat-error *ngIf="streetControl?.getError('required')">Это поле обязательно</mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -142,7 +143,7 @@
     name="home"
     placeholder="Home"
     required>
-    <mat-error *ngIf="homeError?.required">Это поле обязательно</mat-error>
+    <mat-error *ngIf="homeControl?.getError('required')">Это поле обязательно</mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -153,10 +154,10 @@
     name="apartment"
     placeholder="Apartment"
     required>
-    <mat-error *ngIf="apartmentError?.required">Это поле обязательно</mat-error>
+    <mat-error *ngIf="apartmentControl?.getError('required')">Это поле обязательно</mat-error>
   </mat-form-field>
 
   <div>
-    <button mat-button matStepperNext>Next</button>
+    <button mat-button matStepperNext [disabled]="formGroup.invalid">Next</button>
   </div>
 </form>

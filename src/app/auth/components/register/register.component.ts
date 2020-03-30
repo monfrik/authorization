@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { AuthService } from '@app/auth/services';
-import { mustMatch } from '@app/auth/helpers';
+import { mustMatchPasswordValidator } from '@app/auth/helpers';
 
 
 @Component({
@@ -26,16 +26,19 @@ export class RegisterComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    if (this.commonInfoForm.valid && this.billingAddressForm.valid && this.billingInfoForm.valid) {
-     // register function
+    if (this.commonInfoForm.invalid || this.billingAddressForm.invalid || this.billingInfoForm.invalid) {
+      
+      return;
     }
+
+    // register function
   }
 
   private _initForm(): void {
     this.commonInfoForm = this._formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confrimPassword: ['', [Validators.required]],
+      confirmPassword: ['', [Validators.required]],
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
       patronymic: ['', [Validators.required]],
@@ -48,7 +51,7 @@ export class RegisterComponent implements OnInit {
       home: ['', [Validators.required]],
       apartment: ['', [Validators.required]],
     }, {
-      validator: mustMatch('password', 'confrimPassword'),
+      validator: mustMatchPasswordValidator('confirmPassword'),
     });
 
     this.billingAddressForm = this._formBuilder.group({

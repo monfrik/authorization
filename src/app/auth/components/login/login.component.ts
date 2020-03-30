@@ -33,18 +33,21 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   public onSubmit(): void {
-    if (this.loginForm && this.loginForm.valid) {
-      this._authService
-        .login(this.loginForm.value)
-        .pipe(
-          takeUntil(this._destroy$),
-        )
-        .subscribe({
-          next: () => { },
-          error: () => { },
-          complete: () => { },
-        });
+    if (this.loginForm.invalid) {
+      
+      return
     }
+
+    this._authService
+      .login(this.loginForm.value)
+      .pipe(
+        takeUntil(this._destroy$),
+      )
+      .subscribe({
+        next: () => { },
+        error: () => { },
+        complete: () => { },
+      });
   }
 
   public onReset(): void {
