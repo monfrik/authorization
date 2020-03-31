@@ -1,0 +1,60 @@
+<form [formGroup]="formGroup">
+  <mat-form-field>
+    <input
+    formControlName="country"
+    matInput
+    type="text"
+    name="country"
+    placeholder="Country"
+    required>
+  </mat-form-field>
+  <mat-error *ngIf="countryControl?.hasError('required')">Это поле обязательно</mat-error>
+
+  <mat-form-field>
+    <input
+    formControlName="city"
+    matInput
+    type="text"
+    name="city"
+    placeholder="Сity"
+    required>
+  </mat-form-field>
+  <mat-error *ngIf="cityControl?.hasError('required')">Это поле обязательно</mat-error>
+
+  <mat-form-field>
+    <input
+    formControlName="street"
+    matInput
+    type="text"
+    name="street"
+    placeholder="Street"
+    required>
+  </mat-form-field>
+  <mat-error *ngIf="streetControl?.hasError('required')">Это поле обязательно</mat-error>
+
+  <mat-form-field>
+    <input
+    formControlName="home"
+    matInput
+    type="text"
+    name="home"
+    placeholder="Home"
+    required>
+  </mat-form-field>
+  <mat-error *ngIf="homeControl?.hasError('required')">Это поле обязательно</mat-error>
+
+  <mat-form-field>
+    <input
+    formControlName="apartment"
+    matInput
+    type="text"
+    name="apartment"
+    placeholder="Apartment"
+    required>
+  </mat-form-field>
+  <mat-error *ngIf="apartmentControl?.hasError('required')">Это поле обязательно</mat-error>
+
+  <div>
+    <button mat-button matStepperNext [disabled]="formGroup.invalid">Next</button>
+  </div>
+</form>

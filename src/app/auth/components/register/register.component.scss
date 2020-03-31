@@ -1,0 +1,11 @@
+.register {
+  &-stepper {
+    padding: 1rem;
+  }
+  &-actions {
+    display: flex;
+  }
+  &-action {
+    margin-right: .7rem;
+  }
+}
