@@ -1,22 +1,20 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiUrlInterceptor } from './interceptors';
 import { API_URL } from './providers';
 import { environment } from 'src/environments/environment';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
   imports: [
-    HttpClientModule,
-  ],
-  exports: [
-    HttpClientModule,
+    CommonModule,
   ],
 })
 
 export class CoreModule {
-  public static forRoot(apiUrl: string): ModuleWithProviders<CoreModule> {
-    console.log('123')
+
+  public static forRoot(): ModuleWithProviders<CoreModule> {
     return {
       ngModule: CoreModule,
       providers: [
@@ -32,4 +30,5 @@ export class CoreModule {
       ],
     }
   }
+  
 }

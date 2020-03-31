@@ -25,19 +25,28 @@
     <div class="login-actions">
       <button
         mat-raised-button
+        [disabled]="loginForm.invalid"
         color="primary"
         type="submit"
-        class="login-action">Submit</button>
+        class="login-action" >
+        Submit
+      </button>
+
       <button
         mat-stroked-button
         (click)="onReset()"
         type="button"
         color="primary"
-        class="login-action">Reset</button>
+        class="login-action">
+        Reset
+      </button>
+      
       <a
         mat-button
         [routerLink]="['/auth/register']"
-        color="primary">Register</a>
+        color="primary">
+        Register
+      </a>
     </div>
   </form>
 </div>

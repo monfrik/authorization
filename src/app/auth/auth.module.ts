@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import {
@@ -23,6 +23,7 @@ import {
   AuthViewComponent,
 } from './components';
 import { AuthService } from './services';
+import { CoreModule } from '@app/core/core.module';
 
 
 @NgModule({
@@ -32,6 +33,8 @@ import { AuthService } from './services';
     HttpClientModule,
     AuthRoutingModule,
     ReactiveFormsModule,
+    // Core
+    CoreModule.forRoot(),
     // material
     MatInputModule,
     MatCardModule,
@@ -51,7 +54,9 @@ import { AuthService } from './services';
     BillingAddressComponent,
     BillingInfoComponent,
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+  ],
 })
 
 export class AuthModule { }

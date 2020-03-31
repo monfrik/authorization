@@ -8,7 +8,7 @@
     placeholder="Country"
     required>
   </mat-form-field>
-  <mat-error *ngIf="countryControl?.getError('required')">Это поле обязательно</mat-error>
+  <mat-error *ngIf="countryControl?.hasError('required')">Это поле обязательно</mat-error>
 
   <mat-form-field>
     <input
@@ -19,7 +19,7 @@
     placeholder="Сity"
     required>
   </mat-form-field>
-  <mat-error *ngIf="cityControl?.getError('required')">Это поле обязательно</mat-error>
+  <mat-error *ngIf="cityControl?.hasError('required')">Это поле обязательно</mat-error>
 
   <mat-form-field>
     <input
@@ -30,7 +30,7 @@
     placeholder="Street"
     required>
   </mat-form-field>
-  <mat-error *ngIf="streetControl?.getError('required')">Это поле обязательно</mat-error>
+  <mat-error *ngIf="streetControl?.hasError('required')">Это поле обязательно</mat-error>
 
   <mat-form-field>
     <input
@@ -41,7 +41,7 @@
     placeholder="Home"
     required>
   </mat-form-field>
-  <mat-error *ngIf="homeControl?.getError('required')">Это поле обязательно</mat-error>
+  <mat-error *ngIf="homeControl?.hasError('required')">Это поле обязательно</mat-error>
 
   <mat-form-field>
     <input
@@ -52,7 +52,7 @@
     placeholder="Apartment"
     required>
   </mat-form-field>
-  <mat-error *ngIf="apartmentControl?.getError('required')">Это поле обязательно</mat-error>
+  <mat-error *ngIf="apartmentControl?.hasError('required')">Это поле обязательно</mat-error>
 
   <div>
     <button mat-button matStepperNext [disabled]="formGroup.invalid">Next</button>

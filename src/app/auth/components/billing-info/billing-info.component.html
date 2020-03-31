@@ -7,7 +7,7 @@
     name="cart"
     placeholder="Cart">
   </mat-form-field>
-  <mat-error *ngIf="cartControl?.getError('required')">Это поле обязательно</mat-error>
+  <mat-error *ngIf="cartControl?.hasError('required')">Это поле обязательно</mat-error>
 
   <mat-form-field>
     <input
@@ -17,7 +17,7 @@
     name="fullname"
     placeholder="Full name">
   </mat-form-field>
-  <mat-error *ngIf="fullNameControl?.getError('required')">Это поле обязательно</mat-error>
+  <mat-error *ngIf="fullNameControl?.hasError('required')">Это поле обязательно</mat-error>
 
   <mat-form-field>
     <input
@@ -27,7 +27,7 @@
     name="validity"
     placeholder="Validity">
   </mat-form-field>
-  <mat-error *ngIf="validityControl?.getError('required')">Это поле обязательно</mat-error>
+  <mat-error *ngIf="validityControl?.hasError('required')">Это поле обязательно</mat-error>
 
   <mat-form-field>
     <input
@@ -37,7 +37,7 @@
     name="cvv"
     placeholder="CVV">
   </mat-form-field>
-  <mat-error *ngIf="cvvControl?.getError('required')">Это поле обязательно</mat-error>
+  <mat-error *ngIf="cvvControl?.hasError('required')">Это поле обязательно</mat-error>
 
   <div>
     <button mat-button matStepperNext [disabled]="formGroup.invalid">Next</button>
